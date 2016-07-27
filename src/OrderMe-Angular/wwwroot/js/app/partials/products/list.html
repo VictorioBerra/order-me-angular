@@ -13,6 +13,9 @@
                         Name
                     </th>
                     <th>
+                        Price
+                    </th>
+                    <th>
                         Actions
                     </th>
                 </tr>
@@ -21,6 +24,7 @@
                 <tr ng-repeat="prod in vm.products">
                     <td>{{ prod.productId }}</td>
                     <td>{{ prod.name }}</td>
+                    <td>{{ prod.price }}</td>
                     <td>
                         <a ng-click="vm.remove(prod.productId)" class="text-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                         <a ui-sref="products.update({productId: prod.productId})"><i class="fa fa-pencil" aria-hidden="true"></i></a>

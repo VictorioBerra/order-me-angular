@@ -42,7 +42,7 @@ namespace OrderMe_Angular.Controllers
                 throw new InvalidOperationException("name is required");
             }
 
-            _context.Products.Add(new Product() { Name = product.Name });
+            _context.Products.Add(new Product() { Name = product.Name, Price = product.Price });
             _context.SaveChanges();
         }
 

@@ -13,7 +13,8 @@ function ProductAddController(ProductService) {
         ProductService.add(vm.newProductName, vm.newProductPrice)
         .then(function (res) {
             if (res.status == 200) {
-                
+                vm.newProductName = "";
+                vm.newProductPrice = "";
             }            
         });
     }
