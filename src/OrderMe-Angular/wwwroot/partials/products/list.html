@@ -1,0 +1,25 @@
+﻿<fieldset>
+    <legend>All Products</legend>
+</fieldset>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        ID
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="prod in product.products">
+                    <td>{{ prod.productId }}</td>
+                    <td>{{ prod.name }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

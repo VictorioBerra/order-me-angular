@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace OrderMe_Angular.OMA.Models
 {
@@ -9,44 +10,53 @@ namespace OrderMe_Angular.OMA.Models
             : base(options)
         { }
 
-        public DbSet<User> Users { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
-        public DbSet<OrderLine> OrderLines { get; set; }
-    }
 
-    public class User
-    {
-        public int UserId { get; set; }
-        public string Name { get; set; }
-        public string Address { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<OrderLine>()
+                .HasKey(t => new { t.OrderLineId, t.OrderId, t.ProductId });
 
-        public virtual OrderLine OrderLine { get; set; }
+            modelBuilder.Entity<OrderLine>()
+                .HasOne(pt => pt.Order)
+                .WithMany(p => p.OrderLines)
+                .HasForeignKey(pt => pt.OrderId);
+
+            modelBuilder.Entity<OrderLine>()
+                .HasOne(pt => pt.Product)
+                .WithMany(t => t.OrderLines)
+                .HasForeignKey(pt => pt.ProductId);
+        }
+
     }
 
     public class Product
     {
         public int ProductId { get; set; }
+
+        [Required]
         public string Name { get; set; }
 
-        public virtual OrderLine OrderLine { get; set; }
+        public List<OrderLine> OrderLines { get; set; }
     }
 
     public class Order
     {
         public int OrderId { get; set; }
 
-        public virtual OrderLine OrderLine { get; set; }
+        public List<OrderLine> OrderLines { get; set; }
     }
 
     public class OrderLine
     {
         public int OrderLineId { get; set; }
-        public int qty { get; set; }
 
-        public virtual ICollection<Product> Products { get; set; }
-        public virtual ICollection<Order> Orders { get; set; }
-        public virtual ICollection<User> Users { get; set; }
+        public int OrderId { get; set; }
+        public Order Order { get; set; }
+
+        public int ProductId { get; set; }
+        public Product Product { get; set; }
     }
 
 }
