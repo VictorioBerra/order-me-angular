@@ -2,13 +2,13 @@
     <fieldset>
 
         <!-- Form Name -->
-        <legend>Form Name</legend>
+        <legend>Update Product vm.product.productId</legend>
 
         <!-- Text input-->
         <div class="form-group">
             <label class="col-md-4 control-label" for="productname">Product Name</label>
             <div class="col-md-4">
-                <input id="productname" name="productname" type="text" placeholder="product name" class="form-control input-md" required="">
+                <input id="productname" name="productname" type="text" placeholder="product name" class="form-control input-md" required="" ng-model="vm.product.name">
 
             </div>
         </div>
@@ -17,7 +17,7 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="price">Price</label>
             <div class="col-md-4">
-                <input id="price" name="price" type="text" placeholder="10" class="form-control input-md" required="" ng-model="product.newProductName">
+                <input id="price" name="price" type="text" placeholder="10" class="form-control input-md" required="" ng-model="vm.product.price">
 
             </div>
         </div>
@@ -26,7 +26,7 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="submitbtn"></label>
             <div class="col-md-4">
-                <button id="submitbtn" name="submitbtn" class="btn btn-primary" ng-click="product.add()">Add</button>
+                <button id="submitbtn" name="submitbtn" class="btn btn-primary" ng-click="vm.update()">Update</button>
             </div>
         </div>
 

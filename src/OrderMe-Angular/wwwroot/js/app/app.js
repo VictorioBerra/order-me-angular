@@ -1,8 +1,8 @@
 ﻿
 var orderMeApp = angular.module('orderMeApp', [
     'ui.router',
-    'ngAnimate',
-    'toaster']);
+    'ngAnimate'
+]);
 
 orderMeApp.config(function ($stateProvider, $urlRouterProvider) {
 
@@ -11,22 +11,32 @@ orderMeApp.config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('products', {
           url: "/products",
-          templateUrl: "partials/products/index.html"
+          templateUrl: "js/app/partials/products/index.html"
       })
         .state('products.list', {
             url: "/list",
-            templateUrl: "partials/products/list.html",
+            templateUrl: "js/app/partials/products/list.html",
             resolve: {
                 products: function (ProductService) {
                     return ProductService.getAll();
                 }
             },
-            controller: 'ProductListController as product'
+            controller: 'ProductListController as vm'
         })
         .state('products.add', {
             url: "/add",
-            templateUrl: "partials/products/add.html",
-            controller: 'ProductAddController as product'
+            templateUrl: "js/app/partials/products/add.html",
+            controller: 'ProductAddController as vm'
+        })
+        .state('products.update', {
+            url: "/update/:productId",
+            resolve: {
+                product: function (ProductService, $stateParams) {                    
+                    return ProductService.get($stateParams.productId);
+                }
+            },
+            templateUrl: "js/app/partials/products/update.html",
+            controller: 'ProductUpdateController as vm'
         })
 
 });

@@ -29,9 +29,9 @@ namespace OrderMe_Angular.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Product Get(int id)
         {
-            return _context.Products.Where(p => p.ProductId == id).Select(p => p.Name).Single();
+            return _context.Products.Where(p => p.ProductId == id).Single();
         }
 
         // POST api/values
@@ -48,10 +48,13 @@ namespace OrderMe_Angular.Controllers
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        public void Put([FromBody]Product product)
         {
-            Product product = _context.Products.Where(p => p.ProductId == id).Single();
-            product.Name = value;
+            Product productToUpdate = _context.Products.Where(p => p.ProductId == product.ProductId).Single();
+
+            productToUpdate.Name = product.Name;
+            productToUpdate.Price = product.Price;
+
             _context.SaveChanges();
         }
 

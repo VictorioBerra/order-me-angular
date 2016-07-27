@@ -1,7 +1,7 @@
 ﻿/// <autosync enabled="true" />
 /// <reference path="js/app/app.js" />
-/// <reference path="js/controllers/productlistcontroller - copy.js" />
-/// <reference path="js/services/productservice.js" />
+/// <reference path="js/app/controllers/ProductControllers.js" />
+/// <reference path="js/app/services/ProductService.js" />
 /// <reference path="js/site.js" />
 /// <reference path="lib/angular/angular.js" />
 /// <reference path="lib/angular-animate/angular-animate.js" />
