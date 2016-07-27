@@ -8,10 +8,12 @@
     "jquery-validation-unobtrusive": "3.2.6",
     "angular": "1.5.5",
     "font-awesome": "4.6.1",
-    "moment": "2.13.0"
+    "moment": "2.13.0",
+    "AngularJS-Toaster": "2.0.0"
   },
   "resolutions": {
     "jquery": ">= 1.7.2",
-    "jquery-validation": "1.15.0"
+    "jquery-validation": "1.15.0",
+    "angular": "^1.0.8"
   }
 }

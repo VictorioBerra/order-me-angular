@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using OrderMe_Angular.OMA.Models;
 
@@ -37,9 +36,13 @@ namespace OrderMe_Angular.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]string value)
-        {            
-            _context.Products.Add(new Product() { Name = "The Scrubber" });
+        public void Post([FromBody]Product product)
+        {
+            if (String.IsNullOrEmpty(product.Name)) {
+                throw new InvalidOperationException("name is required");
+            }
+
+            _context.Products.Add(new Product() { Name = product.Name });
             _context.SaveChanges();
         }
 

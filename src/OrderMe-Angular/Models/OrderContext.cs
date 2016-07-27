@@ -37,6 +37,8 @@ namespace OrderMe_Angular.OMA.Models
 
         [Required]
         public string Name { get; set; }
+        
+        public int Price { get; set; }
 
         public List<OrderLine> OrderLines { get; set; }
     }
@@ -51,6 +53,8 @@ namespace OrderMe_Angular.OMA.Models
     public class OrderLine
     {
         public int OrderLineId { get; set; }
+
+        public int Quantity { get; set; }
 
         public int OrderId { get; set; }
         public Order Order { get; set; }

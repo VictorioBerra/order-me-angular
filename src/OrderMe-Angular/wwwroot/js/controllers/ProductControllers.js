@@ -4,13 +4,16 @@
 
 .controller('ProductListController', ProductListController);
 
-function ProductAddController(ProductService) {
+function ProductAddController(ProductService, toaster) {
     var vm = this;
 
     vm.add = add;
 
     function add() {
-        ProductService.add(vm.newProductName);
+        var res = ProductService.add(vm.newProductName);
+
+        if (res.status = 200)
+            toaster.success("Added: '" + vm.newProductName + "'");
     }
 }
 

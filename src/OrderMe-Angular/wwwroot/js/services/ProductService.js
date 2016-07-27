@@ -3,15 +3,27 @@
 
     var urlBase = '/api/product';
 
-    var ProductService = {};
+    var ProductService = {
+        getAll: getAll,
+        add: add
+    };
 
-    ProductService.getAll = function () {
+    return ProductService;
+
+    function getAll() {
         return $http.get(urlBase);
     }
 
-    ProductService.add = function (name) {
-        return $http.post(urlBase, name);
+    function remove(id) {
+        return $http.delete(urlBase, id);
     }
 
-    return ProductService;
+    function add(name) {
+        return $http.post(urlBase, {
+            "product": {
+                Name: name
+            }
+        });
+    }
+    
 }]);

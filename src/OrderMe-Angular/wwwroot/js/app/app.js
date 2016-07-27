@@ -1,5 +1,8 @@
 ﻿
-var orderMeApp = angular.module('orderMeApp', ['ui.router']);
+var orderMeApp = angular.module('orderMeApp', [
+    'ui.router',
+    'ngAnimate',
+    'toaster']);
 
 orderMeApp.config(function ($stateProvider, $urlRouterProvider) {
 
