@@ -20,3 +20,7 @@ This is a sample CRUD app for keeping up on my AngularJS and ASP.NET skill set.
 
 ## Edit Product
 ![Edit Product](http://imgur.com/Ga2cEsG.jpg)
+
+## TODO:
+- gulp to ng-annotate and minify the client side code.
+- CRUD for OrderLine via placing Orders
